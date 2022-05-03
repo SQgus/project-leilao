@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" type="text/css" href="css/selecao.css"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/navbar.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+    </head>
+   
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li>
+                    <h1><a href="index.html"><i class="fas fa-magnifying-glass-dollar"></i>Leilãozinho</a></h1>
+                </li>
+                <li><a href="cadastro_oferta.html">Cadastro de Oferta</a></li>
+                <li><a href="selecao_oferta.html">Seleção de Oferta</a></li>
+                <li><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header> 
+    <div id="containerSelecao">
+        <h1>Listagem de Elementos</h1>
+
+        <table id="tblListagem">
+        </table>
+    
+    </div>
+
+    
+    <footer>
+        Autores:<br>
+        Beatriz Maresca Soares / Beatriz Furbino da silva<br>
+        Claudio Simões dos Santos Jr. / Felipe Nascimento dos Santos<br>
+        Gustavo Pinheiro Cardozo Tereza / Rodrigo da Rocha Santos<br>
+    </footer>
+</body>
+<script>
+    
+
+
+
+
+    const listagem = document.getElementById("tblListagem")
+    function criar(elemento) {
+        return document.createElement(elemento);
+    }
+    function colocar(cel, el) {
+         return cel.appendChild(el)
+    }
+            fetch("http://localhost:3000/ofertas")
+            .then(res => res.json())
+            .then(ofertas => {
+                return ofertas.map(function(ofertas) {
+                    let tr = criar("tr");
+                    let td = criar("td");
+                    let a = criar("a");
+                    a.innerHTML = `${ofertas.titulo}`;
+                    a.href = `./lance_oferta.html?id=${ofertas.id}`;
+                    
+                    colocar(td, a);
+                    colocar(tr, td);
+                    colocar(listagem, tr);
+                })
+            })
+
+</script>
+</html>

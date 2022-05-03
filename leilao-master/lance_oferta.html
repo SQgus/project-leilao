@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Lance - Leilão</title>
+        <link rel="shortcut icon" href="imagens/">
+        <link href='css/lance_oferta.css' rel='stylesheet' type='text/css'>
+        <script src='js/jquery-3.6.0.min.js'></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/navbar.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/53bcb05a1f.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <h1><a href="index.html"><span class="fa-thin fa-magnifying-glass-dollar"
+                                        aria-hidden="true"></span>Leilãozinho</a></h1>
+                    </li>
+                    <li><a href="cadastro_oferta.html">Cadastro de Oferta</a></li>
+                    <li><a href="selecao_oferta.html">Seleção de Oferta</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+                <div id="content">
+                        <div id="conteudo">
+
+                        </div>
+                        <br>             
+                    <label for="lance" id="lance"><h3>Lance atual:</h3></label>
+                    <input name="lance" type="text" id="valor" value="0">
+                    <div>
+                        <input id="btn_enviar" type="submit" value="ENVIAR" style="margin-left: 60%;">
+                    </div>
+                </div>
+        </main>
+        <footer>
+            Autores:<br>
+            Beatriz Maresca Soares / Beatriz Furbino da silva<br>
+            Claudio Simões dos Santos Jr. / Felipe Nascimento dos Santos<br>
+            Gustavo Pinheiro Cardozo Tereza / Rodrigo da Rocha Santos<br>
+        </footer>
+    </body>
+    <script>
+            $.extend({
+    getUrlVars: function(){
+        var vars = [], hash;
+        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+        for(var i = 0; i < hashes.length; i++){
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    }
+})
+        var idB = $.getUrlVars()['id'];
+        var idBusca = parseInt(idB)
+
+        function criar(elemento) {
+            return document.createElement(elemento);
+        }
+        function colocar(cel, el) {
+            return cel.appendChild(el)
+        }
+
+
+        const conteudo = document.getElementById("conteudo");
+        const label = document.getElementById("lance");
+        
+
+        
+
+        fetch("http://localhost:3000/ofertas")
+            .then(res => res.json())
+            .then(ofertas => {
+
+                const ArrayBusca = ofertas.filter(function(i) {
+                        return i.id === idBusca;
+                    });
+                 
+                    
+                    let h1 = criar("h1");
+                    let h2 = criar("h2");
+                    let h3 = criar("h3");
+                    h1.innerHTML = `${ArrayBusca[0].titulo}`;
+                    h2.innerHTML = `${ArrayBusca[0].descricao}`;
+                    h3.innerHTML = `${ArrayBusca[0].lance}`;
+                    colocar(conteudo, h1)
+                    colocar(conteudo, h2)
+                    colocar(label, h3)
+                    
+
+            })
+    </script>
+</html>

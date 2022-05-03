@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Cadastro - Leilão</title>
+        <link rel="shortcut icon" href="imagens/">
+        <link href='css/cadastro_oferta.css' rel='stylesheet' type='text/css'>
+        <script src='js/jquery-3.6.0.min.js'></script>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="./css/style.css">
+        <link rel="stylesheet" href="./css/navbar.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Oxygen&family=Oxygen+Mono&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/53bcb05a1f.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <h1><a href="index.html"><span class="fa-thin fa-magnifying-glass-dollar"
+                                        aria-hidden="true"></span>Leilãozinho</a></h1>
+                    </li>
+                    <li><a href="cadastro_oferta.html">Cadastro de Oferta</a></li>
+                    <li><a href="selecao_oferta.html">Seleção de Oferta</a></li>
+                    <li><a href="index.html">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div id="content">
+                <div id='titulo'>
+                    <label for="titulo">Titulo:</label>
+                    <input name="titulo" id="tituloOferta" type="text"/>
+                </div>
+                <div id='desc'>
+                    <label for="desc">Descrição:</label>
+                    <input name="desc" id="descOferta" type="text"/>
+                </div>
+                <div id='preco'>
+                    <label for="preco">Lance Mínimo:</label>
+                    <input name="preco" id="precoOferta" type="number"/>
+                </div>
+                    <button id="btn_enviar" type="submit">
+                        ENVIAR
+                    </button>
+            </div>
+        </main>
+        <footer>
+            Autores:<br>
+            Beatriz Maresca Soares / Beatriz Furbino da silva<br>
+            Claudio Simões dos Santos Jr. / Felipe Nascimento dos Santos<br>
+            Gustavo Pinheiro Cardozo Tereza / Rodrigo da Rocha Santos<br>
+        </footer>
+    </body>
+    <script>
+        const btnEnviar = document.querySelector("#btn_enviar")
+        btnEnviar.addEventListener("click", () => {
+            const tituloTela = document.querySelector("#tituloOferta").value
+            const descricaoTela = document.querySelector("#descOferta").value
+            const precoTela = document.querySelector("#precoOferta").value
+
+            if(!tituloTela || !descricaoTela || !precoTela) {
+                alert("Preecher Campos Obrigatórios")
+                return
+            }
+
+            fetch("http://localhost:3000/ofertas",{
+                method: "POST",
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    "titulo": tituloTela, 
+                    "descricao": descricaoTela,
+                    "lance": precoTela
+                }) 
+            })
+            .then(res => { 
+                alert("Oferta cadastrada com sucesso")
+                window.location.href = "./selecao_oferta.html"
+            })
+            .catch(err => console.log("ERRO"))
+        })
+    </script>
+</html>
