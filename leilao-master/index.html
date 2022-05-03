@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Leilão</title>
+        <link rel="shortcut icon" href="imagens/">
+        <link href='css/index.css' rel='stylesheet' type='text/css'>
+        <script src='js/jquery-3.6.0.min.js'></script>
+        <script>
+            $(document).ready(function() {
+                $('#btn_login').on('click', function(){
+                        $('#novo_usuario').css("display", "none");
+                        $('#login').css("display", "block");
+                    
+                });
+                 $('#btn_n_usuario').on('click', function(){
+                        $('#novo_usuario').css("display", "block");
+                        $('#login').css("display", "none");
+                    
+                });
+            });
+    
+        </script>
+    </head>
+    <body>
+        <main>
+            <div id='esquerda'></div>
+            <div id='direita'>
+                <div id="boas_vindas">
+                    <h1> Leilãozinho</h1>
+                    <p>Bem vindo ao Leilãozinho</p>
+                </div>
+                <div id='form'>
+                    <div id="novo_usuario">
+                        <p>NOVO USUARIO</p>
+                        <input type="email" placeholder="EMAIL">
+                        <input type="password" placeholder="SENHA">
+                        <input type="password" placeholder="CONFIRMA SENHA">
+                    </div>
+                    <div id="login">
+                        <p>LOGIN</p>
+                        <input type="email" id="email" placeholder="USUARIO">
+                        <input type="password"  id="senha" placeholder="SENHA">
+                    </div>
+                </div>
+                <div id='butons'>
+                    <button id="btn_login" type="submit">
+                        LOGIN
+                    </button>
+                    <input id="btn_n_usuario" type="submit" value="Novo Usuário">
+                </div>
+                <footer>
+                    Autores:<br>
+                    Beatriz Maresca Soares / Beatriz Furbino da silva<br>
+                    Claudio Simões dos Santos Jr. / Felipe Nascimento dos Santos<br>
+                    Gustavo Pinheiro Cardozo Tereza / Rodrigo da Rocha Santos<br>
+                </footer>
+            </div>
+        </main>
+    </body>
+    <script>
+        const btnLogin = document.querySelector("#btn_login")
+        btnLogin.addEventListener("click", () => {
+            
+            const usuarioTela = document.querySelector("#email").value
+            const senhaTela = document.querySelector("#senha").value
+            
+            if(usuarioTela === "" || senhaTela === "") {
+                alert("Preecher Campos Obrigatórios")
+                return
+            }
+
+            fetch("http://localhost:3000/usuarios")
+            .then(res => res.json())
+            .then(users => {
+                let user = users.find(user => user.login === usuarioTela)
+                if(!user || user.senha !== senhaTela) {
+                    alert("Usuário ou senha invalidos")
+                    return                   
+                }
+            window.location.href = "./selecao_oferta.html"
+            })
+
+        })
+    </script>
+</html>

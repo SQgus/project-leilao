@@ -1,0 +1,45 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "login": "Goya",
+      "senha": "123456"
+    },
+    {
+      "id": 2,
+      "nome": "Gustavo",
+      "senha": "123456"
+    },
+    {
+      "id": 3,
+      "nome": "Cláudio",
+      "senha": "123456"
+    }
+  ],
+  "ofertas": [
+    {
+      "titulo": "FIAT UNO",
+      "descricao": "FIAT UNO ATTRACTIVE 1.0E - 2016/2017 - PL_ Final 7 (102339). Bem encontra-se: Rodovia Castelo Branco KM 148 - Cesário Lange/SP - Motor: Depenado - MédiaMonta.- Os documentos serão entregues em até 45 dias úteis após a conclusão da venda, podendo ser prorrogado dependendo do funcionamento do DETRAN de origem. Caso existam débitos de IPVA/DPVAT/LICENCIAMENTO 2022 serão de responsabilidade do comprador/arrematante  (Acompanha escada)",
+      "lance": "6000",
+      "id": 1
+    },
+    {
+      "titulo": "Xbox-One",
+      "descricao": "Xbox-One 500 gb usado com todos componentes originais, mais 5 jogos, game em perfeito estado sem defeitos.",
+      "lance": "1300",
+      "id": 2
+    },
+    {
+      "titulo": "Monalisa",
+      "descricao": "A Gioconda ou a Mona Lisa é um dos retratos mais emblemáticos da história da pintura. Pintada por Leonardo da Vinci no século XVI, entrou nas coleções da corte francesa para depois fazer parte das obras expostas no Museu do Louvre.",
+      "lance": "99",
+      "id": 3
+    },
+    {
+      "titulo": "Jabulani",
+      "descricao": "Bola Jabulani da FINAL Copa do Mundo da África do Sul 2010",
+      "lance": "800",
+      "id": 4
+    }
+  ]
+}
