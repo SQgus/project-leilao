@@ -7,12 +7,12 @@
     },
     {
       "id": 2,
-      "nome": "Gustavo",
+      "login": "Gustavo",
       "senha": "123456"
     },
     {
       "id": 3,
-      "nome": "Cláudio",
+      "login": "Cláudio",
       "senha": "123456"
     }
   ],
@@ -20,13 +20,13 @@
     {
       "titulo": "FIAT UNO",
       "descricao": "FIAT UNO ATTRACTIVE 1.0E - 2016/2017 - PL_ Final 7 (102339). Bem encontra-se: Rodovia Castelo Branco KM 148 - Cesário Lange/SP - Motor: Depenado - MédiaMonta.- Os documentos serão entregues em até 45 dias úteis após a conclusão da venda, podendo ser prorrogado dependendo do funcionamento do DETRAN de origem. Caso existam débitos de IPVA/DPVAT/LICENCIAMENTO 2022 serão de responsabilidade do comprador/arrematante  (Acompanha escada)",
-      "lance": "6000",
+      "lance": 6100,
       "id": 1
     },
     {
       "titulo": "Xbox-One",
       "descricao": "Xbox-One 500 gb usado com todos componentes originais, mais 5 jogos, game em perfeito estado sem defeitos.",
-      "lance": "1300",
+      "lance": 1100,
       "id": 2
     },
     {
